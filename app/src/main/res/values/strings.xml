@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Long Tennis Counter</string>
+
+    <!--names of team-->
+    <string name="team_a">Team A</string>
+    <string name="team_b">Team B</string>
+    <string name="sets">Sets</string>
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="three">3</string>
+    <string name="colon">:</string>
+
+    <!--names of Buttons-->
+    <string name="fifteen_points">15 POINTS</string>
+    <string name="thirty_points">30 POINTS</string>
+    <string name="forty_points">40 POINTS</string>
+    <string name="game">Game</string>
+    <string name="reset">Reset</string>
+
+
+
+</resources>
