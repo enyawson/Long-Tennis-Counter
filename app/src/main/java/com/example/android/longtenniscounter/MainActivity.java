@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     public void displayForTeamAPoints (int score){
         TextView teamAPoints = (TextView)findViewById(R.id.team_a_game_points_text_view);
         teamAPoints.setText(String.valueOf(score));
+
     }
 
     public void displayForTeamAGameScore(int score){
@@ -36,11 +37,9 @@ public class MainActivity extends AppCompatActivity {
     public void displayForTeamAWinGame(){
         int teamAGameWonAboveFive, teamBGameWonAboveFive;
         int testSet1TeamA, testSet2TeamA, testSet3TeamA;
+        int testSet1TeamB, testSet2TeamB, testSet3TeamB;
 
         int score = 0;
-        // This assigns the value of Game won to variables, which is used to check if rules of gaming are met.
-        teamAGameWonAboveFive = teamAGameWon;
-        teamBGameWonAboveFive = teamBGameWon;
 
         //This takes the value of Set A1 and converts to an integer
         TextView teamASetOne = (TextView)findViewById(R.id.team_a_set_1_score_text_view);
@@ -58,102 +57,10 @@ public class MainActivity extends AppCompatActivity {
         TextView teamASetThree = (TextView)findViewById(R.id.team_a_set_3_score_text_view);
         String getSetA3StringValueToBeConvertedToInt = teamASetThree.getText().toString();
         int convertSetA3StringValueToInt = Integer.parseInt(getSetA3StringValueToBeConvertedToInt);
-        testSet3TeamA =convertSetA2StringValueToInt;
+        testSet3TeamA =convertSetA3StringValueToInt;
 
+        //TEAM B tested
 
-        if (testSet1TeamA == 0 && teamAGameWonAboveFive > 5 && (teamAGameWonAboveFive - teamBGameWonAboveFive)>=2 ){
-            displayForTeamASetOne(teamAGameWonAboveFive);
-            displayForTeamBSetOne(teamBGameWonAboveFive);
-            teamAGameWon = score ;
-            teamBGameWon = score;
-            resetGameWon();
-            resetGamePoints();
-
-        } else if ((testSet1TeamA != 0 && testSet2TeamA == 0 )&& teamAGameWonAboveFive > 5 && (teamAGameWonAboveFive - teamBGameWonAboveFive)>=2){
-            displayForTeamASetTwo(teamAGameWonAboveFive);
-            displayForTeamBSetTwo(teamBGameWonAboveFive);
-            teamAGameWon = score ;
-            teamBGameWon = score;
-            resetGameWon();
-            resetGamePoints();
-        } else if (testSet2TeamA != 0 && teamAGameWonAboveFive > 5 && (teamAGameWonAboveFive - teamBGameWonAboveFive)>=2){
-            displayForTeamASetThree(teamAGameWonAboveFive);
-            displayForTeamBSetThree(teamBGameWonAboveFive);
-            teamAGameWon = score ;
-            teamBGameWon = score;
-            resetGameWon();
-            resetGamePoints();
-        }
-        else
-        {
-            teamAGameWon += ONE_POINT ;
-            displayForTeamAGameScore(teamAGameWon);
-            resetGamePoints();
-        }
-
-    }
-    //This method is called to display Team A set 1 scores
-    public void displayForTeamASetOne(int score){
-        TextView teamASetOne = (TextView)findViewById(R.id.team_a_set_1_score_text_view);
-        teamASetOne.setText(String.valueOf(score));
-    }
-    //This method is called to display Team A set 2 scores
-    public void displayForTeamASetTwo(int score){
-        TextView teamASetTwo = (TextView)findViewById(R.id.team_a_set_2_score_text_view);
-        teamASetTwo.setText(String.valueOf(score));
-    }
-    //This method is called to display Team A set 3 scores
-    public void displayForTeamASetThree(int score){
-        TextView teamASetThree = (TextView)findViewById(R.id.team_a_set_3_score_text_view);
-        teamASetThree.setText(String.valueOf(score));
-    }
-
-    //CLICK EVENT FOR TEAM A
-    //This method is called to add 15 points to team A game point
-    public void addToTeamA15Points(View view){
-       int teamAGamePoints = FIFTEEN_POINTS;
-        displayForTeamAPoints(teamAGamePoints);
-    }
-    //This method is called to add 30 points to team A game point
-    public void addToTeamA30Points(View view){
-        int teamAGamePoints =THIRTY_POINTS;
-        displayForTeamAPoints(teamAGamePoints);
-    }
-    //This method is called to add 40 points to team A game point
-    public void addToTeamA40Points(View view){
-       int teamAGamePoints =FORTY_POINTS;
-        displayForTeamAPoints(teamAGamePoints);
-    }
-    //This method is called to end a game
-    //This method when called inserts values obtained into the required sets type and initialises
-    //the game score and game points to zero.
-    public void addToTeamAGamePoints(View view){
-        displayForTeamAWinGame();
-
-    }
-
-
-    //DISPLAY FOR TEAM B
-    //This method is called to display Team B points in a game
-    public void displayForTeamBPoints (int score){
-        TextView teamBPoints = (TextView)findViewById(R.id.team_b_game_points_text_view);
-        teamBPoints.setText(String.valueOf(score));
-    }
-    public void displayForTeamBGameScore(int score){
-        TextView teamBGameScore = (TextView)findViewById(R.id.team_b_game_won_text_view);
-        teamBGameScore.setText(String.valueOf(score));
-    }
-    //This method is called to display Team B game Score ( a team needs six games to win a set)
-    /*This method is called in sets scores when there is a minimum value of 6 and a difference of
-     2 game points between teams*/
-    public void displayForTeamBWinGame(){
-        int teamAGameWonAboveFive, teamBGameWonAboveFive;
-        int testSet1TeamB, testSet2TeamB, testSet3TeamB;
-
-        int score = 0;
-        // This assigns the value of Game won to variables, which is used to check if rules of gaming are met.
-        teamAGameWonAboveFive = teamAGameWon;
-        teamBGameWonAboveFive = teamBGameWon;
 
         //This takes the value of Set B1 and converts to an integer
         TextView teamBSetOne = (TextView)findViewById(R.id.team_b_set_1_score_text_view);
@@ -171,10 +78,19 @@ public class MainActivity extends AppCompatActivity {
         TextView teamBSetThree = (TextView)findViewById(R.id.team_b_set_3_score_text_view);
         String getSetB3StringValueToBeConvertedToInt = teamBSetThree.getText().toString();
         int convertSetB3StringValueToInt = Integer.parseInt(getSetB3StringValueToBeConvertedToInt);
-        testSet3TeamB =convertSetB2StringValueToInt;
+        testSet3TeamB =convertSetB3StringValueToInt;
 
 
-        if (testSet1TeamB == 0 && teamBGameWonAboveFive > 5 && (teamBGameWonAboveFive - teamAGameWonAboveFive)>=2 ){
+
+        teamAGameWon += ONE_POINT ;
+        // This assigns the value of Game won to variables, which is used to check if rules of gaming are met.
+        teamAGameWonAboveFive = teamAGameWon;
+        teamBGameWonAboveFive = teamBGameWon;
+
+        displayForTeamAGameScore(teamAGameWon);
+        resetGamePoints();
+
+        if ((testSet1TeamA == 0 && testSet1TeamB ==0) && (teamAGameWonAboveFive > 5 )&& (teamAGameWonAboveFive - teamBGameWonAboveFive)>=2 ){
             displayForTeamASetOne(teamAGameWonAboveFive);
             displayForTeamBSetOne(teamBGameWonAboveFive);
             teamAGameWon = score ;
@@ -182,14 +98,14 @@ public class MainActivity extends AppCompatActivity {
             resetGameWon();
             resetGamePoints();
 
-        } else if ((testSet1TeamB != 0 && testSet2TeamB == 0 ) && teamBGameWonAboveFive > 5 && (teamBGameWonAboveFive - teamAGameWonAboveFive)>=2){
+        } else if ((testSet1TeamA != 0 || testSet1TeamB != 0) && ( testSet2TeamA == 0 && testSet2TeamB == 0)&& (teamAGameWonAboveFive > 5) && (teamAGameWonAboveFive - teamBGameWonAboveFive)>=2){
             displayForTeamASetTwo(teamAGameWonAboveFive);
             displayForTeamBSetTwo(teamBGameWonAboveFive);
             teamAGameWon = score ;
             teamBGameWon = score;
             resetGameWon();
             resetGamePoints();
-        } else if (testSet2TeamB != 0 && teamBGameWonAboveFive > 5 && (teamBGameWonAboveFive - teamAGameWonAboveFive)>=2){
+        } else if (( testSet3TeamA == 0 && testSet3TeamB == 0) && (teamAGameWonAboveFive > 5 )&& (teamAGameWonAboveFive - teamBGameWonAboveFive)>=2){
             displayForTeamASetThree(teamAGameWonAboveFive);
             displayForTeamBSetThree(teamBGameWonAboveFive);
             teamAGameWon = score ;
@@ -197,12 +113,172 @@ public class MainActivity extends AppCompatActivity {
             resetGameWon();
             resetGamePoints();
         }
-        else
-        {
-            teamBGameWon += ONE_POINT ;
-            displayForTeamBGameScore(teamBGameWon);
+        else if ((testSet3TeamA != 0 || testSet3TeamB !=0 )){
+            teamAGameWon = score ;
+            teamBGameWon = score;
+            resetGameWon();
             resetGamePoints();
         }
+        else
+        {
+            //Do nothing
+        }
+
+
+    }
+    //This method is called to display Team A set 1 scores
+    public void displayForTeamASetOne(int score){
+        TextView teamASetOne = (TextView)findViewById(R.id.team_a_set_1_score_text_view);
+        teamASetOne.setText(String.valueOf(score));
+
+    }
+    //This method is called to display Team A set 2 scores
+    public void displayForTeamASetTwo(int score){
+
+        TextView teamASetTwo = (TextView)findViewById(R.id.team_a_set_2_score_text_view);
+        teamASetTwo.setText(String.valueOf(score));
+
+    }
+    //This method is called to display Team A set 3 scores
+    public void displayForTeamASetThree(int score){
+
+        TextView teamASetThree = (TextView)findViewById(R.id.team_a_set_3_score_text_view);
+        teamASetThree.setText(String.valueOf(score));
+
+    }
+
+    //CLICK EVENT FOR TEAM A
+    //This method is called to add 15 points to team A game point
+    public void addToTeamA15Points(View view){
+       int teamAGamePoints = FIFTEEN_POINTS;
+        displayForTeamAPoints(teamAGamePoints);
+        noPointIsToBeReceived();
+    }
+    //This method is called to add 30 points to team A game point
+    public void addToTeamA30Points(View view){
+        int teamAGamePoints =THIRTY_POINTS;
+        displayForTeamAPoints(teamAGamePoints);
+        noPointIsToBeReceived();
+    }
+    //This method is called to add 40 points to team A game point
+    public void addToTeamA40Points(View view){
+       int teamAGamePoints =FORTY_POINTS;
+        displayForTeamAPoints(teamAGamePoints);
+        noPointIsToBeReceived();
+    }
+    //This method is called to end a game
+    //This method when called inserts values obtained into the required sets type and initialises
+    //the game score and game points to zero.
+    public void addToTeamAGamePoints(View view){
+        displayForTeamAWinGame();
+
+    }
+
+
+    //DISPLAY FOR TEAM B
+    //This method is called to display Team B points in a game
+    public void displayForTeamBPoints (int score){
+        TextView teamBPoints = (TextView)findViewById(R.id.team_b_game_points_text_view);
+        teamBPoints.setText(String.valueOf(score));
+
+    }
+    public void displayForTeamBGameScore(int score){
+        TextView teamBGameScore = (TextView)findViewById(R.id.team_b_game_won_text_view);
+        teamBGameScore.setText(String.valueOf(score));
+    }
+    //This method is called to display Team B game Score ( a team needs six games to win a set)
+    /*This method is called in sets scores when there is a minimum value of 6 and a difference of
+     2 game points between teams*/
+    public void displayForTeamBWinGame(){
+        int teamAGameWonAboveFive, teamBGameWonAboveFive;
+        int testSet1TeamB, testSet2TeamB, testSet3TeamB;
+        int testSet1TeamA, testSet2TeamA, testSet3TeamA;
+
+        int score = 0;
+
+        //This takes the value of Set B1 and converts to an integer
+        TextView teamBSetOne = (TextView)findViewById(R.id.team_b_set_1_score_text_view);
+        String getSetB1StringValueToBeConvertedToInt = teamBSetOne.getText().toString();
+        int convertSetB1StringValueToInt = Integer.parseInt(getSetB1StringValueToBeConvertedToInt);
+        testSet1TeamB = convertSetB1StringValueToInt;
+
+        //This takes the value of Set B2 and converts to an integer
+        TextView teamBSetTwo = (TextView)findViewById(R.id.team_b_set_2_score_text_view);
+        String getSetB2StringValueToBeConvertedToInt = teamBSetTwo.getText().toString();
+        int convertSetB2StringValueToInt = Integer.parseInt(getSetB2StringValueToBeConvertedToInt);
+        testSet2TeamB =convertSetB2StringValueToInt;
+
+        //This takes the value of Set B3 and converts to an integer
+        TextView teamBSetThree = (TextView)findViewById(R.id.team_b_set_3_score_text_view);
+        String getSetB3StringValueToBeConvertedToInt = teamBSetThree.getText().toString();
+        int convertSetB3StringValueToInt = Integer.parseInt(getSetB3StringValueToBeConvertedToInt);
+        testSet3TeamB = convertSetB3StringValueToInt;
+
+        //TEAM A tested
+
+        //This takes the value of Set A1 and converts to an integer
+        TextView teamASetOne = (TextView)findViewById(R.id.team_a_set_1_score_text_view);
+        String getSetA1StringValueToBeConvertedToInt = teamASetOne.getText().toString();
+        int convertSetA1StringValueToInt = Integer.parseInt(getSetA1StringValueToBeConvertedToInt);
+        testSet1TeamA = convertSetA1StringValueToInt;
+
+        //This takes the value of Set A2 and converts to an integer
+        TextView teamASetTwo = (TextView)findViewById(R.id.team_a_set_2_score_text_view);
+        String getSetA2StringValueToBeConvertedToInt = teamASetTwo.getText().toString();
+        int convertSetA2StringValueToInt = Integer.parseInt(getSetA2StringValueToBeConvertedToInt);
+        testSet2TeamA =convertSetA2StringValueToInt;
+
+        //This takes the value of Set A3 and converts to an integer
+        TextView teamASetThree = (TextView)findViewById(R.id.team_a_set_3_score_text_view);
+        String getSetA3StringValueToBeConvertedToInt = teamASetThree.getText().toString();
+        int convertSetA3StringValueToInt = Integer.parseInt(getSetA3StringValueToBeConvertedToInt);
+        testSet3TeamA =convertSetA3StringValueToInt;
+
+
+        teamBGameWon += ONE_POINT ;
+
+        // This assigns the value of Game won to variables, which is used to check if rules of gaming are met.
+        teamAGameWonAboveFive = teamAGameWon;
+        teamBGameWonAboveFive = teamBGameWon;
+
+        displayForTeamBGameScore(teamBGameWon);
+        resetGamePoints();
+
+        if ((testSet1TeamB == 0 && testSet1TeamA == 0) && (teamBGameWonAboveFive > 5) && (teamBGameWonAboveFive - teamAGameWonAboveFive) >= 2){
+            displayForTeamASetOne(teamAGameWonAboveFive);
+            displayForTeamBSetOne(teamBGameWonAboveFive);
+            teamAGameWon = score ;
+            teamBGameWon = score;
+            resetGameWon();
+            resetGamePoints();
+
+        } else if ((testSet1TeamB != 0 || testSet1TeamA != 0) && (testSet2TeamB == 0 && testSet2TeamA == 0) && teamBGameWonAboveFive > 5 && (teamBGameWonAboveFive - teamAGameWonAboveFive) >= 2){
+            displayForTeamASetTwo(teamAGameWonAboveFive);
+            displayForTeamBSetTwo(teamBGameWonAboveFive);
+            teamAGameWon = score ;
+            teamBGameWon = score;
+            resetGameWon();
+            resetGamePoints();
+        } else if (( testSet3TeamB == 0 && testSet3TeamA == 0) && teamBGameWonAboveFive > 5 && (teamBGameWonAboveFive - teamAGameWonAboveFive) >= 2){
+            displayForTeamASetThree(teamAGameWonAboveFive);
+            displayForTeamBSetThree(teamBGameWonAboveFive);
+            teamAGameWon = score ;
+            teamBGameWon = score;
+            resetGameWon();
+            resetGamePoints();
+        }
+        else if ((testSet3TeamB!= 0 || testSet3TeamA !=0 )){
+            teamAGameWon = score ;
+            teamBGameWon = score;
+            resetGameWon();
+            resetGamePoints();
+        }
+        else
+        {
+           //Do nothing
+        }
+
+
 
     }
     //This method is called to display Team B set 1 scores
@@ -210,32 +286,38 @@ public class MainActivity extends AppCompatActivity {
         TextView teamBSetOne = (TextView)findViewById(R.id.team_b_set_1_score_text_view);
         teamBSetOne.setText(String.valueOf(score));
 
+
     }
     //This method is called to display Team B set 2 scores
     public void displayForTeamBSetTwo(int score){
         TextView teamBSetTwo = (TextView)findViewById(R.id.team_b_set_2_score_text_view);
         teamBSetTwo.setText(String.valueOf(score));
+
     }
     //This method is called to display Team B set 3 scores
     public void displayForTeamBSetThree(int score){
         TextView teamBSetThree = (TextView)findViewById(R.id.team_b_set_3_score_text_view);
         teamBSetThree.setText(String.valueOf(score));
+
     }
     //CLICK EVENT FOR TEAM B
     //This method is called to add 15 points to team B game point
     public void addToTeamB15Points(View view){
         int teamBGamePoints = FIFTEEN_POINTS;
         displayForTeamBPoints(teamBGamePoints);
+        noPointIsToBeReceived();
     }
     //This method is called to add 30 points to team B game point
     public void addToTeamB30Points(View view){
         int teamBGamePoints = THIRTY_POINTS;
         displayForTeamBPoints(teamBGamePoints);
+        noPointIsToBeReceived();
     }
     //This method is called to add 40 points to team B game point
     public void addToTeamB40Points(View view){
         int teamBGamePoints = FORTY_POINTS;
         displayForTeamBPoints(teamBGamePoints);
+        noPointIsToBeReceived();
     }
     //This method is called to end a game
     //This method when called inserts values obtained into the required sets type and initialises
@@ -258,6 +340,8 @@ public class MainActivity extends AppCompatActivity {
 
     // This resets all scores
     public void resetSetsScores(View view){
+        teamBGameWon = 0;
+        teamAGameWon = 0;
         resetGamePoints();
         resetGameWon();
         displayForTeamASetOne(0);
@@ -267,4 +351,27 @@ public class MainActivity extends AppCompatActivity {
         displayForTeamASetThree(0);
         displayForTeamBSetThree(0);
     }
+
+    //This is called when the last set is assigned values
+    public void noPointIsToBeReceived(){
+        int score = 0;
+        int testSet3TeamA,testSet3TeamB;
+        //This takes the value of Set A3 and converts to an integer
+        TextView teamASetThreeTest = (TextView)findViewById(R.id.team_a_set_3_score_text_view);
+        String getSetA3StringValueToBeConvertedToInt = teamASetThreeTest.getText().toString();
+        int convertSetA3StringValueToInt = Integer.parseInt(getSetA3StringValueToBeConvertedToInt);
+        testSet3TeamA =convertSetA3StringValueToInt;
+
+        //This takes the value of Set B3 and converts to an integer
+        TextView teamBSetThreeTest = (TextView)findViewById(R.id.team_b_set_3_score_text_view);
+        String getSetB3StringValueToBeConvertedToInt = teamBSetThreeTest.getText().toString();
+        int convertSetB3StringValueToInt = Integer.parseInt(getSetB3StringValueToBeConvertedToInt);
+        testSet3TeamB =convertSetB3StringValueToInt;
+
+        if (testSet3TeamA != 0 || testSet3TeamB !=0 ) {
+            resetGamePoints();} else
+                { // do nothing
+                }
+             }
 }
+
